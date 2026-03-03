@@ -21,16 +21,9 @@ public class SecurityConfig {
     SecurityFilterChain SecurityFilterChain(HttpSecurity httpSecurity) {
         return httpSecurity.csrf(Customizer -> Customizer.disable())
                 .authorizeHttpRequests(request -> request.anyRequest().authenticated())
-//                .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
-//        Customizer<CsrfConfigurer<HttpSecurity>> csrfCustomizer = new Customizer<CsrfConfigurer<HttpSecurity>>() {
-//            @Override
-//            public void customize(CsrfConfigurer<HttpSecurity> httpSecurityCsrfConfigurer) {
-//                httpSecurityCsrfConfigurer.disable();
-//            }
-//        };
     }
 
     @Bean
